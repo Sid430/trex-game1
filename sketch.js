@@ -77,6 +77,7 @@ function draw() {
     
   if(keyDown("space")&& trex.y>=161.5) {
     trex.velocityY = -10;
+    trex.playSound("checkPoint.mp3")
   }
   
   trex.velocityY = trex.velocityY + 0.8
