@@ -12,7 +12,7 @@ var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obsta
 
 var score;
 
-localStorage["HighestScore"]=0
+var highScore=-999;
 
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
@@ -97,8 +97,8 @@ function draw() {
   
   }
   else if(gameState===end){
-  
-  score = 0
+    
+   
   
   gameover.visible=true
   restart.visible=true
@@ -191,12 +191,17 @@ function reset(){
   
   trex.changeAnimation("running",trex_running);
   
-  localStorage["HighestScore"]=score
+  if(highScore>score){
+  
+  highScore=score
+  
   
   }
   
-  score = 0;
+  score = 0
+  }
   
   
   
-}
+  
+  
