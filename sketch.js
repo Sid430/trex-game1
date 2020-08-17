@@ -2,6 +2,8 @@ var play=1
 var end=0
 var gameState=play
 
+var checkPoint, die, jump
+
 var trex, trex_running, trex_collided;
 var ground, invisibleGround, groundImage;
 
@@ -17,6 +19,10 @@ var highScore=-999;
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
   trex_collided = loadImage("trex_collided.png");
+  
+  die = loadSound("die.mp3");
+  checkPoint = loadSound("checkPoint.mp3");
+  jump = loadSound("jump.mp3");
   
   groundImage = loadImage("ground2.png");
   
@@ -77,9 +83,18 @@ function draw() {
     
   if(keyDown("space")&& trex.y>=161.5) {
     trex.velocityY = -10;
-    trex.playSound("checkPoint.mp3")
+    jump.play();
   }
   
+    if(score % 100 ===0 && score>0){
+    
+    checkPoint.play();
+    
+    
+    
+    
+    }
+    
   trex.velocityY = trex.velocityY + 0.8
   
   if (ground.x < 0){
@@ -92,6 +107,7 @@ function draw() {
     
   if(obstaclesGroup.isTouching(trex)){
   
+    die.play();
   gameState=end
   
   }
