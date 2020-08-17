@@ -77,7 +77,7 @@ function draw() {
   if(gameState===play){
   
   score = score + Math.round(getFrameRate()/60);
-  
+ 
   text("HIGH SCORE: " + highScore,500,100)
     ground.velocityX = -(4+3*score/100);
     
